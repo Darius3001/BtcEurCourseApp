@@ -1,7 +1,6 @@
 package com.example.btc_eur_course_app.datasource
 
 import android.util.Log
-import com.example.btc_eur_course_app.BuildConfig
 import com.example.btc_eur_course_app.datasource.network.CoinGeckoApi
 import com.example.btc_eur_course_app.datasource.network.interceptor.CoinGeckoAuthInterceptor
 import kotlinx.coroutines.Dispatchers

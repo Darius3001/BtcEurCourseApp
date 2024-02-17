@@ -1,4 +1,4 @@
-package com.example.btc_eur_course_app.datasource
+package com.example.btc_eur_course_app.datasource.network.model
 
 import com.example.btc_eur_course_app.BuildConfig
 import com.google.gson.annotations.SerializedName
