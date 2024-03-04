@@ -1,6 +1,7 @@
 package com.example.btc_eur_course_app.datasource
 
 import android.util.Log
+import com.example.btc_eur_course_app.datasource.domain.BitcoinData
 import com.example.btc_eur_course_app.datasource.network.CoinGeckoApi
 import com.example.btc_eur_course_app.datasource.network.interceptor.CoinGeckoAuthInterceptor
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +40,28 @@ class MainRepository {
         } catch (e: Exception) {
             Log.i("ping", "$e")
             false
+        }
+    }
+
+    suspend fun getHistoricalData(): List<BitcoinData> = withContext(Dispatchers.IO) {
+        try {
+
+            val responseBody = api.getHistoricalBitcoinData().body()
+
+            if (responseBody == null) {
+                Log.w("Historical data", "api call was not successful")
+                return@withContext emptyList()
+            }
+
+            responseBody.prices.map {
+                val timestamp = it[0].toLong()
+                val value = it[1].toDouble()
+
+                BitcoinData(timestamp, value)
+            }
+        } catch (e: Exception) {
+            Log.w("Historical data", "$e")
+            emptyList()
         }
     }
 

@@ -15,6 +15,7 @@ class MainViewModel : ViewModel() {
     fun refresh() {
         viewModelScope.launch {
             state.isConnected.value = repository.testApiConnection()
+            state.historicalData.value = repository.getHistoricalData().toString()
         }
     }
 

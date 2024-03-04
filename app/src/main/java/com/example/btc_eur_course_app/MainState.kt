@@ -5,4 +5,5 @@ import androidx.compose.runtime.mutableStateOf
 
 data class MainState(
     val isConnected: MutableState<Boolean> = mutableStateOf(false),
+    val historicalData: MutableState<String> = mutableStateOf("")
 )

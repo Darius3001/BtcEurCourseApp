@@ -4,10 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.btc_eur_course_app.ui.theme.BtcEurCourseAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,6 +35,11 @@ class MainActivity : ComponentActivity() {
 
                     Text(text = text)
 
+                    Spacer(modifier = Modifier.height(64.dp))
+
+                    Text(
+                        text = viewModel.state.historicalData.value
+                    )
                 }
             }
         }
